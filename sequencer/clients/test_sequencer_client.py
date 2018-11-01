@@ -3,7 +3,7 @@ from sequencer_control import SequencerClient
 class TestClient(SequencerClient):
     conductor_servername = 'conductor'
     sequencer_servername = 'sequencer'
-    sequence_directory = '/home/yertle/sequences/{}/'
+    sequence_directory = '/home/srgang/J/sequences/{}/'
     master_channel = 'Trigger@D15'
     timing_channel = 'Trigger@D15'
 
