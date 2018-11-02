@@ -46,13 +46,16 @@ class YeSrDigitalBoard(YeSrSequencerBoard):
             # default trigger to hi
             for s in sequence[self.master_channel]:
                 s['out'] = True
+                #s['out'] = False
     
             # bring trigger channel low for first T_TRIGGER seconds.
             # slaves will start on rising edge of master_channel
             for c in self.channels:
                 s = {'dt': T_TRIGGER, 'out': sequence[c.key][0]['out']}
-                sequence[c.key].insert(0, s)
+                sequence[c.key].insert(0, s.copy())
+                sequence[c.key].append(s.copy())
             sequence[self.master_channel][0]['out'] = False
+            sequence[self.master_channel][-1]['out'] = False
     
         # timestamp each state change for each channel sequence by summing over 
         # time intervals
